@@ -41,8 +41,11 @@ namespace DirManager
             DateTime? firstDate = Calendar1.SelectedDate;
             DateTime? lastDate = Calendar2.SelectedDate;
 
+            int monthsDifference = (lastDate.Value.Year - firstDate.Value.Year) * 12 + lastDate.Value.Month - firstDate.Value.Month + 1;
             if (firstDate >= lastDate)
                 MessageBox.Show("Конечная дата не может быть равна или меньше начальной даты.");
+            else if (monthsDifference > 12)
+                MessageBox.Show("Нельзя выбрать диапазон больше одного года.");
             else if (path == null || path == "Путь до директории")
                 MessageBox.Show("Вы не выбрали путь для сохранения директорий.");
             else

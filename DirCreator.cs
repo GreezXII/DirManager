@@ -38,7 +38,7 @@ namespace DirManager
 
         public void CreateDirs()
         {
-            while(FirstDate.Value <= LastDate.Value)
+            while (FirstDate.Value <= LastDate.Value)
             {
                 if (FirstDate.Value.Month == LastDate.Value.Month)  // If last month iterate to last selected day
                     CreateMonthFolder(FirstDate.Value.Month, FirstDate.Value.Day, LastDate.Value.Day);
