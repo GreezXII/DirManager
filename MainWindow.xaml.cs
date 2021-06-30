@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Globalization;
+using System.IO;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
@@ -49,9 +50,22 @@ namespace DirManager
                 int daysInMonth = DateTime.DaysInMonth(firstDate.Value.Year, firstDate.Value.Month);
                 int monthNumber = firstDate.Value.Month;
                 string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthNumber);
+                monthName = char.ToUpper(monthName[0]) + monthName.Substring(1);
 
-                string message = $"Values: day = {day}, daysInMonth = {daysInMonth}, monthName = {monthName}.";
-                MessageBox.Show(message);
+                string path = System.IO.Path.Combine(dirPathLabel.Content.ToString(), monthName);
+                if (path == null || dirPathLabel.Content.ToString() == "Путь до директории")
+                    MessageBox.Show("Вы не выбрали путь для сохранения директорий.");
+                else
+                {
+                    Directory.CreateDirectory(path);
+                    string dayPath;
+                    for (; day <= daysInMonth; day++ )
+                    {
+                        dayPath = System.IO.Path.Combine(path, day.ToString());
+                        Directory.CreateDirectory(dayPath);
+                    }
+                }
+                
             }
         }
 
