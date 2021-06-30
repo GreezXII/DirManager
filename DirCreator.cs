@@ -8,7 +8,7 @@ namespace DirManager
     {
         private DateTime? FirstDate { get; set; }
         private DateTime? LastDate { get; set; }
-        private string Path { get; set; }
+        public string Path { get; private set; }
 
         public DirCreator(string path, DateTime? fd, DateTime? ld)
         {

@@ -53,6 +53,9 @@ namespace DirManager
                 DirCreator dirCreator = new DirCreator(path, firstDate, lastDate);
                 dirCreator.CreateDirs();
                 MessageBox.Show("Директории успешно созданы.");
+
+                ProcessStartInfo processInfo = new ProcessStartInfo("explorer.exe", dirCreator.Path);
+                Process.Start(processInfo);
             }
         }
 
