@@ -38,19 +38,15 @@ namespace DirManager
 
         public void CreateDirs()
         {
-            while(FirstDate.Value.Month <= LastDate.Value.Month)
+            while(FirstDate.Value <= LastDate.Value)
             {
-                if (FirstDate.Value.Month == LastDate.Value.Month)
-                {
+                if (FirstDate.Value.Month == LastDate.Value.Month)  // If last month iterate to last selected day
                     CreateMonthFolder(FirstDate.Value.Month, FirstDate.Value.Day, LastDate.Value.Day);
-                }
-                else
-                {
-                    int daysInMonth = DateTime.DaysInMonth(FirstDate.Value.Year, FirstDate.Value.Month);
-                    CreateMonthFolder(FirstDate.Value.Month, FirstDate.Value.Day, daysInMonth);
-                    FirstDate = FirstDate.Value.AddMonths(1);
-                    FirstDate = FirstDate.Value.AddDays(1 - FirstDate.Value.Day);
-                }
+                else  // If not last month iterate to last day of this month
+                    CreateMonthFolder(FirstDate.Value.Month, FirstDate.Value.Day, DateTime.DaysInMonth(FirstDate.Value.Year, FirstDate.Value.Month));
+                
+                FirstDate = FirstDate.Value.AddMonths(1);
+                FirstDate = FirstDate.Value.AddDays(1 - FirstDate.Value.Day);
             }
         }
     }
