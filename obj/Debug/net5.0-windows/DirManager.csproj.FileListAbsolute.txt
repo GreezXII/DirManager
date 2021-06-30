@@ -22,3 +22,5 @@ C:\Users\Кирилл\source\repos\DirManager\obj\Debug\net5.0-windows\DirManage
 C:\Users\Кирилл\source\repos\DirManager\obj\Debug\net5.0-windows\DirManager.genruntimeconfig.cache
 C:\Users\Кирилл\source\repos\DirManager\bin\Debug\net5.0-windows\Ookii.Dialogs.Wpf.dll
 C:\Users\Кирилл\source\repos\DirManager\obj\Debug\net5.0-windows\DirManager.csproj.CopyComplete
+C:\Users\Кирилл\source\repos\DirManager\obj\Debug\net5.0-windows\DirManager.Properties.Resources.resources
+C:\Users\Кирилл\source\repos\DirManager\obj\Debug\net5.0-windows\DirManager.csproj.GenerateResource.cache

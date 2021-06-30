@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DirManager"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="329" Width="434">
+        Title="DirManager" Height="329" Width="434"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,8">
         <Grid.RowDefinitions>
-            <RowDefinition Height="44"></RowDefinition>
+            <RowDefinition Height="44">
+            </RowDefinition>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
@@ -16,10 +20,18 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Content="Путь до директории" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="120"/>
-        <Calendar HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="175" Width="178" Margin="0,20,0,0"/>
-        <Calendar Grid.Column="1" HorizontalAlignment="Center" Margin="0,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="168" Width="178"/>
-        <Button Content="Выполнить" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="27" Width="120" Grid.ColumnSpan="2"/>
-        <Button Content="Выбрать директорию" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Height="20" Width="123"/>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="0.15*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="dirPathLabel" Content="Путь до директории" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="26" HorizontalContentAlignment="Center"/>
+            <Button Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,5,5" Click="Button_Click">
+                <Image Margin="2" Source="Resources/FolderIcon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="25"></Image>
+            </Button>
+        </Grid>
+        <Calendar x:Name="Calendar2" SelectedDate="{x:Static sys:DateTime.Now}" IsTodayHighlighted="False" Grid.Column="1" HorizontalAlignment="Center" Margin="0,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="168" Width="178" GotMouseCapture="Calendar2_GotMouseCapture"/>
+        <Calendar x:Name="Calendar1" SelectedDate="{x:Static sys:DateTime.Now}" IsTodayHighlighted="False" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="175" Width="178" Margin="0,20,0,0" GotMouseCapture="Calendar1_GotMouseCapture"/>
+        <Button x:Name="ExecuteButton" Content="Выполнить" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="27" Width="120" Grid.ColumnSpan="2" Click="ExecuteButton_Click"/>
     </Grid>
 </Window>
