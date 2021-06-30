@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "9UFM7avf7FIjWmg8sPJRHq4EtYuf0qATEZREH3ru+lLcPiwKL7v5egpTFy0TVN4LmUO2/QGxXKSP4DGhHv7J5A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Кирилл\\source\\repos\\DirManager\\DirManager.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Кирилл\\.nuget\\packages\\ookii.dialogs.wpf\\3.1.0\\ookii.dialogs.wpf.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

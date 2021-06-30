@@ -1,0 +1,25 @@
+﻿<Window x:Class="DirManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DirManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="329" Width="434">
+    <Grid Margin="0,0,0,8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44"></RowDefinition>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="23*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="Путь до директории" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="120"/>
+        <Calendar HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Height="175" Width="178" Margin="0,20,0,0"/>
+        <Calendar Grid.Column="1" HorizontalAlignment="Center" Margin="0,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="168" Width="178"/>
+        <Button Content="Выполнить" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Center" Height="27" Width="120" Grid.ColumnSpan="2"/>
+        <Button Content="Выбрать директорию" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Height="20" Width="123"/>
+    </Grid>
+</Window>
