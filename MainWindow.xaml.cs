@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Globalization;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -37,6 +38,7 @@ namespace DirManager
 
         private void ExecuteButton_Click(object sender, RoutedEventArgs e)
         {
+            string path = dirPathLabel.Content.ToString();
             DateTime? firstDate = Calendar1.SelectedDate;
             DateTime? lastDate = Calendar2.SelectedDate;
 
@@ -46,26 +48,45 @@ namespace DirManager
             }
             else
             {
-                int day = firstDate.Value.Day;
-                int daysInMonth = DateTime.DaysInMonth(firstDate.Value.Year, firstDate.Value.Month);
-                int monthNumber = firstDate.Value.Month;
-                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthNumber);
-                monthName = char.ToUpper(monthName[0]) + monthName.Substring(1);
-
-                string path = System.IO.Path.Combine(dirPathLabel.Content.ToString(), monthName);
-                if (path == null || dirPathLabel.Content.ToString() == "Путь до директории")
+                
+                if (path == null || path == "Путь до директории")
                     MessageBox.Show("Вы не выбрали путь для сохранения директорий.");
                 else
                 {
-                    Directory.CreateDirectory(path);
-                    string dayPath;
-                    for (; day <= daysInMonth; day++ )
+                    int monthNumber = firstDate.Value.Month;
+                    int firstDay = firstDate.Value.Day;
+                    int lastDay = DateTime.DaysInMonth(firstDate.Value.Year, firstDate.Value.Month);
+
+                    while(firstDate.Value.Month <= lastDate.Value.Month)
                     {
-                        dayPath = System.IO.Path.Combine(path, day.ToString());
-                        Directory.CreateDirectory(dayPath);
+                        CreateMonthFolder(monthNumber, firstDay, lastDay);
+                        firstDate = firstDate.Value.AddMonths(1);
                     }
+
+                    MessageBox.Show("Директории созданы.");
+                    ProcessStartInfo procInfo = new ProcessStartInfo("Explorer.exe", path);
+                    Process.Start(procInfo);
                 }
-                
+            }
+
+        }
+
+        private void CreateMonthFolder(int monthNumber, int firstDay, int lastDay)
+        {
+            // Get month name by number
+            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthNumber);
+            monthName = char.ToUpper(monthName[0]) + monthName.Substring(1);
+
+            // Create month directory
+            string path = System.IO.Path.Combine(dirPathLabel.Content.ToString(), monthName);
+            Directory.CreateDirectory(path);
+
+            // Create directories for days
+            string dayPath;
+            for (; firstDay <= lastDay; firstDay++)
+            {
+                dayPath = System.IO.Path.Combine(path, firstDay.ToString());
+                Directory.CreateDirectory(dayPath);
             }
         }
 
